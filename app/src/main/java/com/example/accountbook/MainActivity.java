@@ -2,6 +2,7 @@ package com.example.accountbook;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,10 +12,18 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    ArrayList<SQLDatabase> incomes = new ArrayList<>();
+    ArrayList<SQLDatabase> outcomes = new ArrayList<>();
 
     ImageButton addbutton;
     Button intentbutton;
+    Button chkbutton;
 
     String name;
     String type;
@@ -69,6 +78,15 @@ public class MainActivity extends AppCompatActivity {
                 }catch (SQLException e){
 
                 }
+            }
+        });
+
+        chkbutton = (Button)findViewById(R.id.checkbtn);
+        chkbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, detail.class);
+                startActivity(intent);
             }
         });
 
